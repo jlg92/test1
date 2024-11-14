@@ -3,12 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Site Web</title>
+    <title>Page d'entrée avec code</title>
+    <style>
+        /* Style pour masquer le contenu principal par défaut */
+        #main-content {
+            display: none;
+        }
+        /* Style pour centrer le formulaire */
+        .login-form {
+            text-align: center;
+            margin-top: 100px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Bienvenue sur mon site web</h1>
-    </header>
-    <p>Ceci est ma première page hébergée sur GitHub Pages !</p>
+
+    <!-- Formulaire de code d'entrée -->
+    <div class="login-form">
+        <h2>Entrez le code d'accès</h2>
+        <input type="password" id="code-input" placeholder="Code d'accès">
+        <button onclick="checkCode()">Entrer</button>
+        <p id="error-message" style="color: red;"></p>
+    </div>
+
+    <!-- Contenu principal, caché au départ -->
+    <div id="main-content">
+        <h1>Bienvenue sur mon site</h1>
+        <p>Voici le contenu réservé aux utilisateurs ayant le code d'accès.</p>
+    </div>
+
+    <script>
+        // Code d'accès défini
+        const ACCESS_CODE = "1234"; // Remplace "1234" par le code de ton choix
+
+        // Fonction de vérification du code
+        function checkCode() {
+            const inputCode = document.getElementById("code-input").value;
+            const errorMessage = document.getElementById("error-message");
+
+            if (inputCode === ACCESS_CODE) {
+                // Masquer le formulaire et afficher le contenu principal
+                document.querySelector(".login-form").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            } else {
+                // Afficher un message d'erreur
+                errorMessage.textContent = "Code incorrect. Veuillez réessayer.";
+            }
+        }
+    </script>
+
 </body>
 </html>
